@@ -1,0 +1,17 @@
+<div
+  class="anime-card"
+  [class.expanded]="expanded">
+
+  <div class="card-inner" (click)="select($event)">
+
+    <div class="card-front" >
+      <ng-content select="[front]" />
+    </div>
+
+    <div class="card-back">
+      <ng-content select="[back]" />
+    </div>
+
+  </div>
+
+</div>

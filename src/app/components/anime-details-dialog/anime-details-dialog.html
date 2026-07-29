@@ -1,0 +1,36 @@
+<div class="dialog-content">
+  <div class="poster-column">
+    <img [src]="anime.imageUrl" [alt]="anime.title" class="anime-poster" />
+  </div>
+
+  <div class="details-column">
+    <h1>{{ anime.title }}</h1>
+    <mat-chip-set>
+      <mat-chip>
+        Airing
+        <mat-icon fontSet="material-symbols-outlined">psychiatry</mat-icon>
+      </mat-chip>
+    </mat-chip-set>
+
+    <div class="meta">
+      @if (anime.year) {
+        <span>{{ anime.year }}</span>
+      }
+
+      @if (anime.score) {
+        <span>⭐ {{ anime.score }}</span>
+      }
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="synopsis">
+      {{ anime.synopsis }}
+    </div>
+    <hr />
+    {{ anime.genres }}
+    <br>
+    <div class="flex gap-2"> <mat-icon fontSet="material-symbols-outlined">swords</mat-icon>{{ anime.themes }} </div>
+
+  </div>
+</div>

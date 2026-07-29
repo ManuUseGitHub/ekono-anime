@@ -1,0 +1,130 @@
+<div
+  class="dialog-like card filter-holder h-full"
+  (mouseenter)="emit('enter', $event)"
+  (mouseleave)="emit('left', $event)"
+>
+  <div [formGroup]="form" class="flex h-full flex-col">
+    <h2 class="bg-blue-500 dialog-title">Filters</h2>
+    <div class="flex-1 overflow-y-hidden">
+      @if (form) {
+        <form (submit)="emit('search', $event)" class="filters overflow-y-auto w-full">
+          <div class="flex">
+            <div class="flex flex-col">
+              <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Title or contains</mat-label>
+                <input matInput placeholder="Ex. Pizza" [formControl]="form.controls.text" />
+              </mat-form-field>
+              <div class="border p-3 mb-5">
+                <mat-label>Genres</mat-label>
+                <div class="checkbox-group flex flex-wrap">
+                  @for (item of sigGenres(); track item.genre) {
+                    <mat-checkbox
+                      class="w-1/3"
+                      [checked]="selectedGenres().includes(item.genre)"
+                      (change)="toggleGenre(item.genre, $event.checked)"
+                    >
+                      <div class="flex flex-col">
+                        {{ item.genre }} <app-anime-count [count]="item.animeCount" />
+                      </div>
+                    </mat-checkbox>
+                  }
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <mat-form-field appearance="outline" [className]="'w-full sm:flex-1'">
+                  <mat-label>Themes</mat-label>
+                  <mat-select [formControl]="form.controls.themes" multiple>
+                    @for (item of sigThemes(); track item) {
+                      <mat-option [value]="item.theme">
+                        {{ item.theme }} <app-anime-count [count]="item.animeCount" />
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+                <app-form-selector-na
+                  [className]="'w-full sm:flex-1'"
+                  [controlName]="'approved'"
+                  [filterForm]="formBoolean"
+                  [options]="sigApproved()"
+                  [text]="'approval'"
+                  [onReadOption]="onReadApproved"
+                ></app-form-selector-na>
+                <app-form-selector-na
+                  [className]="'w-full sm:flex-1'"
+                  [controlName]="'airing'"
+                  [filterForm]="formBoolean"
+                  [options]="sigAiring()"
+                  [text]="'airing'"
+                  [onReadOption]="onReadAiring"
+                ></app-form-selector-na>
+                <mat-form-field appearance="outline" [className]="'w-full sm:flex-1'">
+                  <mat-label>Type</mat-label>
+                  <mat-select [formControl]="form.controls.types" multiple>
+                    @for (item of sigTypes(); track item; let index = $index) {
+                      <mat-option [value]="item.type">
+                        {{ item.type ? item.type : 'no type' }}
+                        <app-anime-count [count]="item.animeCount" />
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" [className]="'w-full sm:flex-1'">
+                  <mat-label>Source</mat-label>
+                  <mat-select [formControl]="form.controls.sources" multiple>
+                    @for (item of sigSources(); track item) {
+                      <mat-option [value]="item.source">
+                        {{ item.source ? item.source : 'no source' }}
+                        <app-anime-count [count]="item.animeCount" />
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" [className]="'w-full sm:flex-1'">
+                  <mat-label>Year</mat-label>
+                  <mat-select [formControl]="form.controls.years" multiple>
+                    @for (item of sigYears(); track item) {
+                      <mat-option [value]="item.year">
+                        {{ item.year ? item.year : 'no year' }}
+                        <app-anime-count [count]="item.animeCount" />
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" [className]="'w-full sm:flex-1'">
+                  <mat-label>Seasons</mat-label>
+                  <mat-select [formControl]="form.controls.seasons" multiple>
+                    @for (item of sigSeasons(); track item) {
+                      <mat-option [value]="item.season">
+                        {{ item.season ? item.season : 'no season' }}
+                        <app-anime-count [count]="item.animeCount" />
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" [className]="'w-full sm:flex-1'">
+                  <mat-label>Rating</mat-label>
+                  <mat-select [formControl]="form.controls.rating" multiple>
+                    @for (item of sigRating(); track item) {
+                      <mat-option [value]="item.rating">
+                        {{ item.rating ? item.rating : 'no info' }}
+                        <app-anime-count [count]="item.animeCount" />
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </form>
+      }
+    </div>
+    <h2 class="bg-blue-500 dialog-footer">
+      <div class="flex justify-end w-ull">
+        <button matButton (click)="emit('search')" class="bg-blue-500">search</button>
+        <app-filter-string-component></app-filter-string-component>
+      </div>
+    </h2>
+  </div>
+</div>

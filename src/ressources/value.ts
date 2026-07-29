@@ -1,0 +1,1 @@
+export const INCLUSIVE_MARK = "*";

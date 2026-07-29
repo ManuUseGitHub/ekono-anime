@@ -1,0 +1,10 @@
+ROOT:
+  SEARCH:
+    FILTER:
+    PAGINATION:
+      START:
+      PREVIOUS:
+      JUMP_BACK:
+      JUMP_FORTH:
+      NEXT:
+      END:

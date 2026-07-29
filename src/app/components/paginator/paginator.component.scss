@@ -1,0 +1,96 @@
+.wrapper {
+  width: 0;
+  z-index: 10;
+
+  [filterchild] {
+    overflow: hidden;
+    margin-right: 1em;
+  }
+
+  .page-nav {
+    transition: all 0.2s ease-in-out, margin-bottom 0.5s cubic-bezier(1, 0.99, 0.61, 1.64);
+    border-radius: 50% !important;
+    margin-bottom: 3em;
+    z-index: 100;
+    width: 8em !important;
+    height: 8em;
+    overflow: hidden;
+    padding: 0.3em !important;
+    margin-right: 1em;
+
+    .title {
+      transition: border-radius 0.2s ease-in-out;
+      border-radius: 50%;
+      width: 7.3em;
+      min-height: 7.3em !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pages {
+      overflow: hidden;
+      width: 0%;
+      height: 0em;
+    }
+
+    .spinner {
+      opacity: 0;
+    }
+
+    .spinner .mat-mdc-button-base {
+      width: 1em;
+      height: 1em;
+      transition: all 0.2s ease-in-out;
+    }
+
+
+  }
+
+  &.activated {
+    width: fit-content;
+
+    [filterchild] {
+      overflow: visible;
+    }
+
+    .page-nav {
+      padding: 1em;
+
+      .title {
+        border-radius: 0.3em;
+        width: 100%;
+        min-height: max-content !important;
+        display: relative;
+        align-items: center;
+        justify-content: center;
+      }
+
+      border-radius: 0.5em !important;
+      width: fit-content !important;
+      height: fit-content;
+      margin-bottom: 1em;
+
+      .spinner {
+        opacity: 1;
+      }
+
+      .spinner .mat-mdc-button-base {
+        width: 2em;
+        height: 2em;
+      }
+
+      .pages {
+        width: 100%;
+        height: 5em;
+      }
+    }
+  }
+
+}
+
+:root {
+  .mat-mdc-paginator-page-size-label {
+    display: none;
+  }
+}

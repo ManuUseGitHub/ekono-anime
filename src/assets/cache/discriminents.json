@@ -1,0 +1,754 @@
+{
+  "data": {
+    "genres": [
+      {
+        "genre": "Comedy",
+        "animeCount": 7979
+      },
+      {
+        "genre": "Fantasy",
+        "animeCount": 6215
+      },
+      {
+        "genre": "Action",
+        "animeCount": 4985
+      },
+      {
+        "genre": "Adventure",
+        "animeCount": 4592
+      },
+      {
+        "genre": "Sci-Fi",
+        "animeCount": 3575
+      },
+      {
+        "genre": "Drama",
+        "animeCount": 3157
+      },
+      {
+        "genre": "Romance",
+        "animeCount": 2294
+      },
+      {
+        "genre": "Hentai",
+        "animeCount": 1630
+      },
+      {
+        "genre": "Supernatural",
+        "animeCount": 1572
+      },
+      {
+        "genre": "Slice of Life",
+        "animeCount": 1280
+      },
+      {
+        "genre": "Avant Garde",
+        "animeCount": 1122
+      },
+      {
+        "genre": "Mystery",
+        "animeCount": 1035
+      },
+      {
+        "genre": "Sports",
+        "animeCount": 835
+      },
+      {
+        "genre": "Ecchi",
+        "animeCount": 828
+      },
+      {
+        "genre": "Horror",
+        "animeCount": 609
+      },
+      {
+        "genre": "Suspense",
+        "animeCount": 477
+      },
+      {
+        "genre": "Award Winning",
+        "animeCount": 258
+      },
+      {
+        "genre": "Gourmet",
+        "animeCount": 258
+      },
+      {
+        "genre": "Boys Love",
+        "animeCount": 202
+      },
+      {
+        "genre": "Girls Love",
+        "animeCount": 129
+      },
+      {
+        "genre": "Erotica",
+        "animeCount": 95
+      }
+    ],
+    "themes": [
+      {
+        "theme": "Music",
+        "animeCount": 5540
+      },
+      {
+        "theme": "School",
+        "animeCount": 2300
+      },
+      {
+        "theme": "Historical",
+        "animeCount": 1901
+      },
+      {
+        "theme": "Anthropomorphic",
+        "animeCount": 1369
+      },
+      {
+        "theme": "Mecha",
+        "animeCount": 1359
+      },
+      {
+        "theme": "Parody",
+        "animeCount": 822
+      },
+      {
+        "theme": "Adult Cast",
+        "animeCount": 790
+      },
+      {
+        "theme": "Martial Arts",
+        "animeCount": 789
+      },
+      {
+        "theme": "Military",
+        "animeCount": 751
+      },
+      {
+        "theme": "Super Power",
+        "animeCount": 744
+      },
+      {
+        "theme": "Space",
+        "animeCount": 689
+      },
+      {
+        "theme": "Mythology",
+        "animeCount": 558
+      },
+      {
+        "theme": "Harem",
+        "animeCount": 499
+      },
+      {
+        "theme": "Isekai",
+        "animeCount": 499
+      },
+      {
+        "theme": "Psychological",
+        "animeCount": 479
+      },
+      {
+        "theme": "Idols (Female)",
+        "animeCount": 416
+      },
+      {
+        "theme": "Mahou Shoujo",
+        "animeCount": 374
+      },
+      {
+        "theme": "Educational",
+        "animeCount": 367
+      },
+      {
+        "theme": "Strategy Game",
+        "animeCount": 364
+      },
+      {
+        "theme": "Team Sports",
+        "animeCount": 330
+      },
+      {
+        "theme": "Gag Humor",
+        "animeCount": 321
+      },
+      {
+        "theme": "Gore",
+        "animeCount": 280
+      },
+      {
+        "theme": "CGDCT",
+        "animeCount": 264
+      },
+      {
+        "theme": "Detective",
+        "animeCount": 260
+      },
+      {
+        "theme": "Samurai",
+        "animeCount": 253
+      },
+      {
+        "theme": "Workplace",
+        "animeCount": 246
+      },
+      {
+        "theme": "Urban Fantasy",
+        "animeCount": 242
+      },
+      {
+        "theme": "Racing",
+        "animeCount": 232
+      },
+      {
+        "theme": "Iyashikei",
+        "animeCount": 188
+      },
+      {
+        "theme": "Video Game",
+        "animeCount": 188
+      },
+      {
+        "theme": "Vampire",
+        "animeCount": 182
+      },
+      {
+        "theme": "Reincarnation",
+        "animeCount": 179
+      },
+      {
+        "theme": "Time Travel",
+        "animeCount": 178
+      },
+      {
+        "theme": "Idols (Male)",
+        "animeCount": 177
+      },
+      {
+        "theme": "Performing Arts",
+        "animeCount": 161
+      },
+      {
+        "theme": "Pets",
+        "animeCount": 153
+      },
+      {
+        "theme": "Organized Crime",
+        "animeCount": 118
+      },
+      {
+        "theme": "Love Polygon",
+        "animeCount": 111
+      },
+      {
+        "theme": "Otaku Culture",
+        "animeCount": 109
+      },
+      {
+        "theme": "Combat Sports",
+        "animeCount": 104
+      },
+      {
+        "theme": "Visual Arts",
+        "animeCount": 100
+      },
+      {
+        "theme": "Reverse Harem",
+        "animeCount": 81
+      },
+      {
+        "theme": "Survival",
+        "animeCount": 81
+      },
+      {
+        "theme": "Delinquents",
+        "animeCount": 79
+      },
+      {
+        "theme": "Childcare",
+        "animeCount": 75
+      },
+      {
+        "theme": "Crossdressing",
+        "animeCount": 66
+      },
+      {
+        "theme": "High Stakes Game",
+        "animeCount": 62
+      },
+      {
+        "theme": "Medical",
+        "animeCount": 54
+      },
+      {
+        "theme": "Showbiz",
+        "animeCount": 52
+      },
+      {
+        "theme": "Love Status Quo",
+        "animeCount": 47
+      },
+      {
+        "theme": "Magical Sex Shift",
+        "animeCount": 34
+      },
+      {
+        "theme": "Villainess",
+        "animeCount": 31
+      }
+    ],
+    "sources": [
+      {
+        "source": "Original",
+        "animeCount": 12968
+      },
+      {
+        "source": "Manga",
+        "animeCount": 5738
+      },
+      {
+        "source": "Unknown",
+        "animeCount": 2709
+      },
+      {
+        "source": "Game",
+        "animeCount": 1552
+      },
+      {
+        "source": "Other",
+        "animeCount": 1392
+      },
+      {
+        "source": "Light novel",
+        "animeCount": 1265
+      },
+      {
+        "source": "Visual novel",
+        "animeCount": 1171
+      },
+      {
+        "source": "Web manga",
+        "animeCount": 752
+      },
+      {
+        "source": "Novel",
+        "animeCount": 711
+      },
+      {
+        "source": "Web novel",
+        "animeCount": 425
+      },
+      {
+        "source": "4-koma manga",
+        "animeCount": 344
+      },
+      {
+        "source": "Picture book",
+        "animeCount": 292
+      },
+      {
+        "source": "Music",
+        "animeCount": 277
+      },
+      {
+        "source": "Mixed media",
+        "animeCount": 254
+      },
+      {
+        "source": "Book",
+        "animeCount": 228
+      },
+      {
+        "source": "Card game",
+        "animeCount": 80
+      },
+      {
+        "source": "Radio",
+        "animeCount": 14
+      }
+    ],
+    "types": [
+      {
+        "type": "TV",
+        "animeCount": 8696
+      },
+      {
+        "type": "Movie",
+        "animeCount": 5028
+      },
+      {
+        "type": "Music",
+        "animeCount": 4381
+      },
+      {
+        "type": "ONA",
+        "animeCount": 4345
+      },
+      {
+        "type": "OVA",
+        "animeCount": 4258
+      },
+      {
+        "type": "Special",
+        "animeCount": 1762
+      },
+      {
+        "type": "TV Special",
+        "animeCount": 809
+      },
+      {
+        "type": "CM",
+        "animeCount": 507
+      },
+      {
+        "type": "PV",
+        "animeCount": 318
+      },
+      {
+        "type": null,
+        "animeCount": 68
+      }
+    ],
+    "airing": [
+      {
+        "airing": false,
+        "animeCount": 29801
+      },
+      {
+        "airing": true,
+        "animeCount": 371
+      }
+    ],
+    "approved": [
+      {
+        "approved": true,
+        "animeCount": 30172
+      }
+    ],
+    "ratinig": [
+      {
+        "rating": "PG-13 - Teens 13 or older",
+        "animeCount": 11236
+      },
+      {
+        "rating": "G - All Ages",
+        "animeCount": 9325
+      },
+      {
+        "rating": "PG - Children",
+        "animeCount": 4492
+      },
+      {
+        "rating": "R - 17+ (violence & profanity)",
+        "animeCount": 1653
+      },
+      {
+        "rating": "Rx - Hentai",
+        "animeCount": 1623
+      },
+      {
+        "rating": "R+ - Mild Nudity",
+        "animeCount": 1247
+      },
+      {
+        "rating": null,
+        "animeCount": 596
+      }
+    ],
+    "seasons": [
+      {
+        "season": null,
+        "animeCount": 23648
+      },
+      {
+        "season": "spring",
+        "animeCount": 2043
+      },
+      {
+        "season": "fall",
+        "animeCount": 1891
+      },
+      {
+        "season": "winter",
+        "animeCount": 1346
+      },
+      {
+        "season": "summer",
+        "animeCount": 1244
+      }
+    ],
+    "ears": [
+      {
+        "year": null,
+        "animeCount": 23648
+      },
+      {
+        "year": 2025,
+        "animeCount": 297
+      },
+      {
+        "year": 2023,
+        "animeCount": 285
+      },
+      {
+        "year": 2024,
+        "animeCount": 285
+      },
+      {
+        "year": 2016,
+        "animeCount": 284
+      },
+      {
+        "year": 2017,
+        "animeCount": 281
+      },
+      {
+        "year": 2018,
+        "animeCount": 281
+      },
+      {
+        "year": 2026,
+        "animeCount": 257
+      },
+      {
+        "year": 2015,
+        "animeCount": 248
+      },
+      {
+        "year": 2021,
+        "animeCount": 245
+      },
+      {
+        "year": 2014,
+        "animeCount": 242
+      },
+      {
+        "year": 2022,
+        "animeCount": 237
+      },
+      {
+        "year": 2019,
+        "animeCount": 231
+      },
+      {
+        "year": 2013,
+        "animeCount": 222
+      },
+      {
+        "year": 2020,
+        "animeCount": 220
+      },
+      {
+        "year": 2006,
+        "animeCount": 194
+      },
+      {
+        "year": 2011,
+        "animeCount": 189
+      },
+      {
+        "year": 2012,
+        "animeCount": 187
+      },
+      {
+        "year": 2007,
+        "animeCount": 164
+      },
+      {
+        "year": 2009,
+        "animeCount": 164
+      },
+      {
+        "year": 2008,
+        "animeCount": 161
+      },
+      {
+        "year": 2010,
+        "animeCount": 143
+      },
+      {
+        "year": 2004,
+        "animeCount": 132
+      },
+      {
+        "year": 2005,
+        "animeCount": 121
+      },
+      {
+        "year": 2003,
+        "animeCount": 112
+      },
+      {
+        "year": 2001,
+        "animeCount": 95
+      },
+      {
+        "year": 1999,
+        "animeCount": 93
+      },
+      {
+        "year": 2002,
+        "animeCount": 92
+      },
+      {
+        "year": 1998,
+        "animeCount": 80
+      },
+      {
+        "year": 2000,
+        "animeCount": 61
+      },
+      {
+        "year": 1997,
+        "animeCount": 46
+      },
+      {
+        "year": 1992,
+        "animeCount": 44
+      },
+      {
+        "year": 1995,
+        "animeCount": 41
+      },
+      {
+        "year": 1996,
+        "animeCount": 40
+      },
+      {
+        "year": 1991,
+        "animeCount": 39
+      },
+      {
+        "year": 1988,
+        "animeCount": 38
+      },
+      {
+        "year": 1989,
+        "animeCount": 38
+      },
+      {
+        "year": 1983,
+        "animeCount": 37
+      },
+      {
+        "year": 1984,
+        "animeCount": 37
+      },
+      {
+        "year": 1994,
+        "animeCount": 37
+      },
+      {
+        "year": 1981,
+        "animeCount": 30
+      },
+      {
+        "year": 1987,
+        "animeCount": 30
+      },
+      {
+        "year": 1982,
+        "animeCount": 29
+      },
+      {
+        "year": 1990,
+        "animeCount": 29
+      },
+      {
+        "year": 1980,
+        "animeCount": 28
+      },
+      {
+        "year": 1977,
+        "animeCount": 27
+      },
+      {
+        "year": 1986,
+        "animeCount": 27
+      },
+      {
+        "year": 1976,
+        "animeCount": 25
+      },
+      {
+        "year": 1979,
+        "animeCount": 25
+      },
+      {
+        "year": 1993,
+        "animeCount": 23
+      },
+      {
+        "year": 1974,
+        "animeCount": 22
+      },
+      {
+        "year": 1978,
+        "animeCount": 22
+      },
+      {
+        "year": 1975,
+        "animeCount": 21
+      },
+      {
+        "year": 1985,
+        "animeCount": 20
+      },
+      {
+        "year": 2027,
+        "animeCount": 19
+      },
+      {
+        "year": 1970,
+        "animeCount": 18
+      },
+      {
+        "year": 1973,
+        "animeCount": 18
+      },
+      {
+        "year": 1967,
+        "animeCount": 16
+      },
+      {
+        "year": 1969,
+        "animeCount": 16
+      },
+      {
+        "year": 1971,
+        "animeCount": 16
+      },
+      {
+        "year": 1972,
+        "animeCount": 15
+      },
+      {
+        "year": 1968,
+        "animeCount": 14
+      },
+      {
+        "year": 1965,
+        "animeCount": 12
+      },
+      {
+        "year": 1966,
+        "animeCount": 11
+      },
+      {
+        "year": 1963,
+        "animeCount": 5
+      },
+      {
+        "year": 1964,
+        "animeCount": 4
+      },
+      {
+        "year": 1961,
+        "animeCount": 1
+      },
+      {
+        "year": 1962,
+        "animeCount": 1
+      }
+    ]
+  }
+}

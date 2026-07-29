@@ -1,0 +1,25 @@
+<div [formGroup]="filterForm">
+  <mat-form-field appearance="outline" class="w-full">
+    @if (!isCompact) {
+      <mat-label ngClass="form-label">{{ text }}</mat-label>
+    }
+    <mat-select
+      [id]="controlName"
+      [formControlName]="controlName"
+      class="form-select"
+      [ngClass]="getClassIfDefault"
+    >
+      <mat-option [value]="inclMark">{{ !isCompact ? 'N/A' : text + ' n/a' }}</mat-option>
+      @for (specific of specifics; track specific) {
+        <mat-option [value]="specific">
+          {{ specific | tagOption }}
+        </mat-option>
+      }
+      @for (option of options; track option) {
+        <mat-option [value]="option">
+          <span [innerHtml]="onReadOption(option) | tagOption"></span>
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>

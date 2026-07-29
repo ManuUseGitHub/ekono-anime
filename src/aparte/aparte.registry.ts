@@ -1,0 +1,17 @@
+export type EventRegistry ={
+	PUSH?:'aparte.debug.listeners'|'aparte.debug.broadcasters',
+	HISTORY?:'aparte.debug.listeners'|'aparte.debug.broadcasters',
+	LOG?:'aparte.debug',
+	FILTER?:'anime.search',
+	START?:'anime.search.pagination',
+	PREVIOUS?:'anime.search.pagination',
+	JUMP_BACK?:'anime.search.pagination',
+	JUMP_FORTH?:'anime.search.pagination',
+	NEXT?:'anime.search.pagination',
+	END?:'anime.search.pagination',
+	HELLO?:'system.saying',
+	WORLD?:'system.saying',
+	BYE?:'system.saying',
+	ACTIVE?:'ux.search.hover',
+	UNACTIVE?:'ux.search.hover'
+};

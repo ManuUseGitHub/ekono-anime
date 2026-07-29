@@ -1,0 +1,102 @@
+<div class="flex flex-col fixed top-0 bottom-0 right-0 wrapper" [ngClass]="{ activated: active() }">
+  <div class="flex-1 content-end pt-1 pb-5 overflow-y-hidden justify-items-end" >
+    <ng-content
+      (mouseenter)="activatePaginator()"
+      (mouseleave)="unactivePaginator()"
+      select="[filterChild]"
+    />
+  </div>
+  <div class="h-fit justify-items-end z-10">
+    <div
+      class="flex flex-col page-nav card"
+      (mouseenter)="activatePaginator()"
+      (mouseleave)="unactivePaginator()"
+    >
+      <h3 class="text-center w-full mb-3 p-1 rounded bg-blue-500 text-white title">paginator</h3>
+      <div class="spinner flex justify-center">
+        <div class="flex flex-col fast-travels" [ngClass]="{ hidden: !active() }">
+          <label> Previous pages:</label>
+          <div>
+            <button mat-icon-button (click)="first()" [disabled]="currentPage <= 1">
+              <mat-icon>first_page</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="jumpBack()" [disabled]="currentPage <= 10">
+              <mat-icon>keyboard_double_arrow_left</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="previous()" [disabled]="currentPage <= 1">
+              <mat-icon>chevron_left</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex flex-col">
+            <label for="page">page:</label>
+            <mat-form-field appearance="outline" class="page-spinner">
+              <input
+                matInput
+                type="number"
+                [min]="1"
+                [max]="totalPages"
+                [(ngModel)]="currentPage"
+                (blur)="onSpinnerBlur()"
+                (keyup.enter)="onSpinnerBlur()"
+              />
+            </mat-form-field>
+          </div>
+          <ng-content select="[paginator]" />
+        </div>
+        <div class="flex flex-col fast-travels" [ngClass]="{ hidden: !active() }">
+          <label> Next pages:</label>
+          <div>
+            <button mat-icon-button (click)="next()">
+              <mat-icon>chevron_right</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              (click)="jumpForward()"
+              [disabled]="currentPage >= totalPages - 10"
+            >
+              <mat-icon>keyboard_double_arrow_right</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="last()">
+              <mat-icon>last_page</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pages">
+        <hr />
+        <div class="flex justify-center center">
+          @if (currentPage > 1) {
+            <div class="flex items-center text-gray-400">•••</div>
+          }
+
+          @for (page of pagesBefore; track page) {
+            <button mat-button (click)="goTo(page)">
+              {{ page }}
+            </button>
+          }
+
+          <button mat-button disabled>
+            {{ currentPage }}
+          </button>
+
+          @for (page of pagesAfter; track page) {
+            <button mat-button (click)="goTo(page)">
+              {{ page }}
+            </button>
+          }
+
+          @if (currentPage < totalPages - 2) {
+            <div class="flex items-center text-gray-400">•••</div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
