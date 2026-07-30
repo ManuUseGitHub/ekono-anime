@@ -37,7 +37,7 @@ export const compressIdsWithPrefix = (ids: number[], t: number): string => {
 
     const sorted = [...new Set(ids)].sort((a, b) => a - b);
     const range = encodeRanges(sorted);
-    const list = ids.join(":");
+    const list = sorted.join(":");
     const encodings = [range, list];
     let prefix = "R";
 
@@ -60,27 +60,35 @@ export const encodeRanges = (ids: number[]): string => {
     let start = ids[0];
     let end = ids[0];
 
-    for (let i = 0; i < ids.length; i++) {
+    for (let i = 1; i < ids.length; i++) {
         if (ids[i] === end + 1) {
             end = ids[i];
         } else {
-            parts.push(start === end ? `${start}` : `${start}-${end}`);
+            parts.push(encodeRange(start, end));
             start = end = ids[i];
         }
     }
 
-    parts.push(start === end ? `${start}` : `${start}-${end}`);
+    parts.push(encodeRange(start, end));
 
     return parts.join(":");
 };
 
 export const decodeIdRanges = (idIntervals: string) => {
     const ids: number[] = [];
-    if (/^\d$|^(?:(?:\d+(?:|-\d+)):?)+$/gm.test(idIntervals)) {
+    if (/^\d$|^(?:(?:\d+(?:p\d?|-\d+)?):?)+$/gm.test(idIntervals)) {
         const idRanges = idIntervals.split(":");
 
         idRanges.forEach(idr => {
-            if (/-/.test(idr)) {
+            if (/p/.test(idr)) {
+                const [startString, distanceString] = idr.split("p");
+                const start = parseInt(startString);
+                const distance = distanceString ? parseInt(distanceString) : 1;
+
+                for (let i = start; i <= start + distance; i++) {
+                    ids.push(i);
+                }
+            } else if (/-/.test(idr)) {
                 const limits = idr.split("-");
                 let i: number = parseInt(limits[0]);
                 const t = parseInt(limits[1]);
@@ -95,6 +103,15 @@ export const decodeIdRanges = (idIntervals: string) => {
     }
     return ids;
 };
+
+function encodeRange(start: number, end: number): string {
+    const distance = end - start;
+
+    if (distance === 0) return `${start}`;
+    if (distance === 1) return `${start}p`;
+    if (distance <= 9) return `${start}p${distance}`;
+    return `${start}-${end}`;
+}
 
 export const decodeAll = (idIntervals: string) => {
     const ids: number[] = [];
@@ -123,12 +140,32 @@ export const getSearchStringFromFilterData = (data: { [x: string]: any }, filter
 
     const filtersSearchKeys = generatePrefixIdentifiers(data);
     const list: string[] = [];
-    Object.entries(conversion).forEach(([k, v]) => {
+    Object.keys(conversion).forEach(k => {
         const vFilter = filter[k];
 
-        const t = Array.isArray(vFilter) ? data[k].length : -1;
         if (Array.isArray(vFilter)) {
-            list.push(filtersSearchKeys[k] + ":" + compressIdsWithPrefix(v, t));
+            const options = getSearchableOptions(data[k]);
+            const t = options.length;
+
+            const vPositive: any[] = [];
+            const vNegative: any[] = [];
+
+            vFilter.forEach(vn => {
+                if (options.includes(vn)) {
+                    vPositive.push(options.indexOf(vn));
+                } else if (`${vn}`.startsWith("-")) {
+                    vNegative.push(options.indexOf(`${vn}`.slice(1)));
+                }
+            });
+
+            const rangeDefinition =
+                ":" +
+                compressIdsWithPrefix(vPositive, t) +
+                (vNegative.length ? "!" + compressIdsWithPrefix(vNegative, t).slice(1) : "");
+
+            if (rangeDefinition != ":Z") {
+                list.push(filtersSearchKeys[k] + rangeDefinition);
+            }
         } else if (typeof vFilter == "string") {
             list.push(filtersSearchKeys[k] + ":T" + encodeURI(vFilter));
         } else {
@@ -136,7 +173,7 @@ export const getSearchStringFromFilterData = (data: { [x: string]: any }, filter
         }
     });
 
-    return "." + list.sort().join(".");
+    return list.length ? "." + list.sort().join(".") : "";
 };
 
 export const decodeSearchString = (searchString: string, data: any) => {
@@ -178,15 +215,22 @@ function getCypheredFilter(data: { [x: string]: any }, filter: { [x: string]: an
         const matchedFilter: any = filter[key];
 
         if (matchedFilter != undefined) {
+            const matchedFilterNormalized = Array.isArray(matchedFilter)
+                ? matchedFilter.map(n => (`${n}`.startsWith("-") ? `${n}`.slice(1) : n))
+                : matchedFilter;
+
             if (Array.isArray(v)) {
                 if (!cyphered[key]) {
                     cyphered[key] = [];
                 }
 
+                const options = getSearchableOptions(v);
                 (v as any[]).forEach(v => {
-                    const index = matchedFilter.indexOf(v);
-                    if (index != -1) {
-                        cyphered[key].push(data[k].sort().indexOf(v));
+                    const index = matchedFilterNormalized.indexOf(v);
+                    const optionIndex = options.indexOf(v);
+
+                    if (index != -1 && optionIndex != -1) {
+                        cyphered[key].push(optionIndex);
                     }
                 });
             } else {
@@ -208,11 +252,20 @@ export function getDeCypheredFilter(data: { [x: string]: any }, cyphered: { [x: 
             }
 
             v.forEach((i: number) => {
-                filter[key].push(data[key].sort()[i]);
+                filter[key].push(getSearchableOptions(data[key])[i]);
             });
         } else {
             filter[key] = cyphered[key];
         }
     });
     return filter;
+}
+
+function getSearchableOptions(options: any[]): any[] {
+    const isExclusion = (option: any) => typeof option === "string" && option.startsWith("-");
+
+    return [
+        ...options.filter(option => !isExclusion(option)).sort(),
+        ...options.filter(isExclusion).sort()
+    ];
 }

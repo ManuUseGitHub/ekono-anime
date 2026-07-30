@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
     Component,
     EventEmitter,
     inject,
@@ -80,7 +81,7 @@ type AnimeFilterForm = {
     templateUrl: "./anime-filters-component.html",
     styleUrl: "./anime-filters-component.scss"
 })
-export class AnimeFiltersComponent extends AparteBusEventComponent implements OnInit {
+export class AnimeFiltersComponent extends AparteBusEventComponent implements OnInit, AfterViewInit {
     private activatedRoute = inject(ActivatedRoute);
 
     constructor(protected override events: EventService) {
@@ -119,8 +120,8 @@ export class AnimeFiltersComponent extends AparteBusEventComponent implements On
             this.filterNullProperties({
                 ...this.form.getRawValue(),
                 ...{
-                    airing: booleanFormValue.airing == INCLUSIVE_MARK ? null : booleanFormValue.airing!.airing,
-                    approved: booleanFormValue.approved == INCLUSIVE_MARK ? null : booleanFormValue.approved!.approved
+                    airing: booleanFormValue.airing == INCLUSIVE_MARK ? null : [booleanFormValue.airing!.airing],
+                    approved: booleanFormValue.approved == INCLUSIVE_MARK ? null : [booleanFormValue.approved!.approved]
                 },
                 genres: this.form.controls.genres.value ?? []
             }) as AnimeFilter
@@ -190,7 +191,9 @@ export class AnimeFiltersComponent extends AparteBusEventComponent implements On
                 signal.set(list.sort());
             });
         });
+    }
 
+    ngAfterViewInit() {
         this.activatedRoute.queryParamMap.subscribe(data => {
             const searchString = data.get("search");
             if (searchString) {
@@ -206,7 +209,7 @@ export class AnimeFiltersComponent extends AparteBusEventComponent implements On
                     (this.form.controls as any)[k].setValue(result[k]);
                 });
 
-                console.log(result);
+                this.brodacastSearch();
             }
         });
     }

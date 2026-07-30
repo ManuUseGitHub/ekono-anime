@@ -5,8 +5,8 @@ import { EventDebuger } from "../../../../aparte/shared/debugEventHandling";
 import { environment } from "../../../../environments/environment";
 import { AnimeFilter } from "../../../models/AnimeFilter";
 import { getCombinedFilterData, getSearchStringFromFilterData } from "../../../../searchString";
-import { getExtension } from "../../../../ressources/malFilterExtension";
 import { data } from "../../../../ressources/totalFilter";
+import { getExtension } from "../../../../ressources/malFilterExtension";
 
 @Component({
     selector: "app-filter-string-component",
@@ -24,7 +24,6 @@ export class FilterStrinigComponent extends AparteBusEventComponent implements O
         this.listenDoing({ FILTER: "anime.search" }, (event: AnimeFilter) => this.computeString(event));
     }
     computeString(event: AnimeFilter): void {
-      console.log(event)
         this.computedFilterString.set(
             getSearchStringFromFilterData(getCombinedFilterData(data, getExtension()), event)
         );

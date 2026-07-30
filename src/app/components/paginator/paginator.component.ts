@@ -41,7 +41,7 @@ export class PageSelectorComponent extends AparteBusEventComponent implements On
 
     unactivePaginator() {
         this.tActive = setTimeout(() => {
-            //this.active.set(false);
+            this.active.set(false);
         }, 1000);
     }
     activatePaginator() {

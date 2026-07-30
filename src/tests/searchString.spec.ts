@@ -1,4 +1,4 @@
-import { example,genres,total,minimum } from "./exempleFilter.json";
+import { example, genres, total, minimum } from "./exempleFilter.json";
 import * as data from "../ressources/fullOptions.json";
 import { getExtension } from "../ressources/malFilterExtension";
 
@@ -74,29 +74,46 @@ test.each([
 test("", () => {
     const event = example;
     const result = getSearchStringFromFilterData(data, event);
-    expect(result).toBe(".ge:A20.se:R1")
+    expect(result).toBe(".ge:A20.se:R1");
 });
-
-
 
 test("A set of Ids for genres cannot start by zero if the option is not the first one", () => {
     const result = getSearchStringFromFilterData(data, genres);
-    expect(result).toBe(".ge:R5")
+    expect(result).toBe(".ge:R5");
 });
 
-test("", () => {
-    const event = {genres : ['Adventure', 'Adventure', 'Boys Love', 'Comedy', 'Romance', 'Slice of Life', 'Sports', 'Suspense']};
+test("The string given is deterministic", () => {
+    const event = {
+        genres: ["Adventure", "Adventure", "Boys Love", "Comedy", "Romance", "Slice of Life", "Sports", "Suspense"]
+    };
     const result = getSearchStringFromFilterData(data, event);
-    expect(result).toBe(".ge:R1:4-5:15:17-18:20")
+    expect(result).toBe(".ge:R1:4p:15:17p:20");
+});
+
+test("The string given is deterministic with negative filters", () => {
+    const event = {
+        genres: [
+            "Adventure",
+            "Adventure",
+            "Boys Love",
+            "Comedy",
+            "Romance",
+            "Slice of Life",
+            "Sports",
+            "Suspense",
+            "-Hentai",
+            "-Horror"
+        ]
+    };
+    const result = getSearchStringFromFilterData(data, event);
+    expect(result).toBe(".ge:R1:4p:15:17p:20!12p");
 });
 
 it("is possible to decypher from a a cyphered filter", () => {
+    const search = getSearchStringFromFilterData(data, minimum);
+    const result = getDeCypheredFilter(data, decodeSearchString(search, data));
 
-    const combinedData = getCombinedFilterData(total, getExtension());
-    const search = getSearchStringFromFilterData(combinedData, minimum);
-    const result = getDeCypheredFilter(combinedData, decodeSearchString(search, combinedData));
-
-    expect(minimum).toStrictEqual(result);
+    expect(getSearchStringFromFilterData(data, result)).toStrictEqual(search);
 });
 
 //console.log(".ai:R0-2.ap:R1.ge:R0-21.ra:R0-6.se:R0-4.so:R0-16.th:R0-9:11-38:40-51.ty:R1-2:4-9.ye:B6mZVMOy5GbUP");

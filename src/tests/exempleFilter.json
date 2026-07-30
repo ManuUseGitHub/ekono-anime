@@ -237,6 +237,8 @@
   "minimum": {
     "text": "gakkou's new house\"",
     "approved": [
+      null,
+      true,
       false
     ],
     "types": [
@@ -255,7 +257,7 @@
       1961
     ],
     "genres": [
-      "-hentai"
+      "Hentai"
     ],
     "themes": [
       "Adult Cast"
@@ -346,6 +348,14 @@
   "genres": {
     "genres": [
       "Comedy"
+    ]
+  },
+  "removed-out": {
+    "genres": [
+      "Comedy",
+      "-Hentai",
+      "-Horror",
+      "Mystery"
     ]
   }
 }
